@@ -18,4 +18,4 @@ Dieses CSS-Theme transformiert die YouTube-Oberfläche und setzt einen starken F
 
 🛠️ Installation
 
-(Hier fügen Sie typischerweise die Anweisungen ein, wie Benutzer das CSS in ihren Browser oder ein Theme-Tool wie Stylus einfügen können.)
+(CSS in  Browser oder ein Theme-Tool wie Stylus einfügen.)
