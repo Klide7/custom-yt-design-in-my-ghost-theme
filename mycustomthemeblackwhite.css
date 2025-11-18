@@ -1,0 +1,268 @@
+/* Custom Styles für dein persönliches YouTube-Thema  Created by Klide*/
+
+/* --- FARBDEFINITIONEN --- */
+/* Eisweiß: #F0F8FF */
+/* Kohleschwarz: #121212 (etwas weicher als reines Schwarz, aber sehr dunkel) */
+/* Reines Schwarz: #000000 (für den stärksten Kontrast am Ende) */
+/* Dunkler Text/Hintergrund für Textlesbarkeit: #1e1e1e (Sehr dunkles Grau) */
+/* DeepPink für Buttons: #FF1493 */
+
+/* 1. Diagonalen Farbverlauf mit starkem Kontrast und "Glow" auf den gesamten Hintergrund anwenden */
+ytd-app, body {
+    /* Radialer Verlauf für den "Glow"-Effekt von der oberen linken Ecke */
+    /* Der lineare Verlauf sorgt für den starken Schwarz-Weiß-Kontrast */
+    background: 
+        radial-gradient(circle at 0% 0%, #F0F8FF 0%, transparent 40%), /* Glow-Effekt aus der Ecke */
+        linear-gradient(to bottom right, #F0F8FF 0%, #121212 50%, #000000 100%) !important; /* Haupt-Farbverlauf */
+    min-height: 100vh !important;
+    background-attachment: fixed !important; /* Fixiert den Hintergrund beim Scrollen */
+}
+
+/* 2. Obere Navigationsleiste (#masthead-container) anpassen */
+#masthead-container, #container.ytd-masthead {
+    background-color: #121212 !important; /* Kohleschwarz für die Navbar */
+    border-bottom: 1px solid #F0F8FF !important; /* Dünne weiße Linie als Kontrast */
+    box-shadow: 0 2px 10px rgba(240, 248, 255, 0.3) !important; /* Subtiler Glow-Schatten */
+}
+
+/* 3. Seitenleiste/Menü (Guide) links anpassen */
+#guide-content {
+    background: linear-gradient(
+        to bottom, 
+        #F0F8FF 0%,         /* Beginnt oben mit Eisweiß */
+        #121212 100%        /* Endet unten mit Kohleschwarz */
+    ) !important;
+    box-shadow: 2px 0 10px rgba(240, 248, 255, 0.3) !important; /* Subtiler Glow-Schatten */
+}
+
+/* 4. Haupt-Inhaltsbereiche transparent machen, damit der Verlauf sichtbar wird */
+#page-manager, ytd-page-manager, 
+#contents.ytd-rich-grid-renderer, 
+#content.ytd-two-column-browse-results-renderer,
+ytd-browse[page-subtype="home"] #primary.ytd-two-column-browse-results-renderer {
+    background-color: transparent !important;
+}
+
+/* 5. Schrift- und Icon-Farben anpassen für bessere Lesbarkeit */
+/* Text auf der oberen Navigationsleiste (dunkler Hintergrund) wird hell */
+#masthead-container *, 
+ytd-searchbox #search-icon-container, 
+#search-input.ytd-searchbox {
+    color: #F0F8FF !important; /* Eisweißer Text auf Kohleschwarz */
+}
+/* Text auf der Seitenleiste (von Hell zu Dunkel) */
+#guide-content * {
+    color: #000000 !important; /* Schwarzer Text auf hellem Seitenleisten-Hintergrund */
+}
+/* Suchfeld-Hintergrund anpassen */
+ytd-searchbox #search-input {
+    background-color: #333333 !important; /* Dunkleres Suchfeld */
+    border: 1px solid #F0F8FF !important; /* Heller Rahmen */
+}
+
+/* 6. PINKE LIKE- UND DISLIKE-BUTTONS (NEU & AGGRESSIVER) */
+/* Dies sind die hartnäckigsten Elemente, hier verwenden wir stärkere Selektoren */
+/* Allgemeine Button-Icons */
+#segmented-like-button yt-icon,
+#segmented-dislike-button yt-icon,
+ytd-menu-renderer.ytd-watch-metadata #segmented-like-button yt-icon,
+ytd-menu-renderer.ytd-watch-metadata #segmented-dislike-button yt-icon {
+    color: #FF1493 !important; /* DeepPink für die Icons */
+}
+
+/* Icons, wenn sie NICHT ausgewählt sind (Standardzustand) */
+#segmented-like-button ytd-toggle-button-renderer[aria-pressed="false"] yt-icon,
+#segmented-dislike-button ytd-toggle-button-renderer[aria-pressed="false"] yt-icon {
+    color: #FF1493 !important;
+}
+
+/* Icons, wenn sie AUSGEWÄHLT/AKTIVIERT sind */
+#segmented-like-button ytd-toggle-button-renderer[aria-pressed="true"] yt-icon,
+#segmented-dislike-button ytd-toggle-button-renderer[aria-pressed="true"] yt-icon {
+    color: #FF1493 !important; /* Stellen Sie sicher, dass sie auch im aktiven Zustand Pink bleiben */
+}
+
+/* Text (Anzahl) neben den Buttons */
+#segmented-like-button #text,
+#segmented-dislike-button #text {
+    color: #FF1493 !important; /* DeepPink für den Text */
+}
+
+/* Icons in den "More Actions"-Menüs (Share, Download, Save, etc.) */
+ytd-menu-renderer #button yt-icon {
+    color: #F0F8FF !important; /* Eisweiß, damit sie sichtbar sind */
+}
+
+/* Hover-Effekte für Links und Buttons in der Seitenleiste */
+#guide-content a:hover, #guide-content button:hover {
+    background-color: rgba(255, 20, 147, 0.2) !important; /* Leichter pinker Hover-Effekt */
+}
+/* --- Eisweiß-Glow um den Video-Player --- */
+
+/* Selector für den Hauptcontainer des Video-Players (dieser kann sich je nach YouTube-Update ändern) */
+ytd-watch-flexy #player-theater-container, /* Für den Kinomodus */
+ytd-watch-flexy #player-container, 
+#ytd-player { /* ZUSÄTZLICH: Neuer Fallback-Selector für den Player selbst */
+    /* Fügt den leuchtenden weißen Schatten um den Player hinzu */
+    box-shadow: 
+        0 0 15px 5px rgba(240, 248, 255, 0.5), /* Heller innerer Glow */
+        0 0 30px 10px rgba(240, 248, 255, 0.2) !important; 
+    
+    /* Stellt sicher, dass die Ecken abgerundet sind, wenn sie es normalerweise sind */
+    border-radius: 12px !important; 
+    
+    /* Setzt den Hintergrund des Containers auf Kohleschwarz, falls er nicht schon dunkel ist */
+    background-color: #121212 !important;
+}
+
+/* Optional: Das Video-Player-Element selbst */
+#movie_player {
+    border-radius: 12px !important; 
+}
+
+/* Fix für den Ambient Mode, der manchmal den Glow auf dem Haupt-Wrapper neutralisiert */
+ytd-watch-flexy[is-watch-page] #columns.ytd-watch-flexy,
+ytd-watch-flexy[is-watch-page] #primary-inner {
+    background-color: transparent !important; /* Stellt sicher, dass der Glow durchscheint */
+}
+
+
+/* --- FIX V5: Entfernen aller braunen Metadaten-Bereiche (ULTIMATIV) --- */
+
+/* Globale Variable überschreiben (ULTIMATIVER FIX FÜR BRAUNEN HINTERGRUND) */
+ytd-app, body {
+    --yt-saturated-base-background: #121212 !important; 
+    --yt-spec-touch-response: transparent !important;
+    --yt-spec-info-text: #F0F8FF !important;
+    --yt-spec-brand-background-primary: #121212 !important;
+    /* Borders auf Eisweiß setzen */
+    --yt-spec-border-dark: #F0F8FF !important; 
+    --yt-spec-border-lighter: #F0F8FF !important;
+    --yt-spec-border-stronger: #F0F8FF !important;
+}
+
+/* Metadaten-Boxen */
+/* Hinzugefügter Selektor für den braunen Balken unter dem Video im Vollbild/Theatermodus */
+ytd-watch-flexy[flexy] #info-container {
+    background-color: #121212 !important;
+}
+
+#info-contents,
+ytd-watch-info-section-renderer,
+#info,
+yt-formatted-string#info {
+    background-color: #121212 !important;
+    color: #F0F8FF !important; /* Stellt sicher, dass der Text in der Infozeile hell ist */
+}
+
+
+/* Der ausklappbare Beschreibungskasten */
+ytd-video-description-infocard-renderer,
+#description-inline-container,
+ytd-expander, /* Haupt-Expander-Element */
+ytd-expander[id="description"] {
+    background-color: #121212 !important; 
+    color: #F0F8FF !important;
+    border: 1px solid #F0F8FF !important;
+    border-radius: 8px !important;
+}
+
+/* Stellt sicher, dass der Text innerhalb der Beschreibung weiß ist und Hover-Fix */
+ytd-video-description-infocard-renderer *,
+ytd-expander *,
+ytd-video-description-infocard-renderer:hover,
+#description-inline-container:hover,
+ytd-expander:hover {
+    color: #F0F8FF !important;
+    background-color: #121212 !important; 
+    box-shadow: none !important;
+}
+
+/* 7. Anpassung der hartnäckigen Hover-Boxen (Tooltips) (Unverändert) */
+ytd-tooltip-renderer #tooltip,
+yt-tooltip-renderer #tooltip,
+[id='tooltip'] {
+    background-color: #121212 !important;
+    border: 1px solid #F0F8FF !important;
+    box-shadow: 0 0 10px rgba(240, 248, 255, 0.5) !important;
+    color: #F0FFF !important;
+}
+ytd-tooltip-renderer #text, yt-tooltip-renderer #text, [id='tooltip'] * {
+    color: #F0F8FF !important;
+}
+ytd-tooltip-renderer #tooltip::before, ytd-tooltip-renderer #tooltip::after,
+yt-tooltip-renderer #tooltip::before, yt-tooltip-renderer #tooltip::after {
+    background-color: #121212 !important;
+    border-color: #F0F8FF !important;
+}
+
+
+/* --- FIX V11: KOMMENTARBEREICH REPARATUR --- */
+
+/* 1. Haupt-Kommentarbereich: Hintergrund + Äußerer Glow erhalten */
+ytd-comments,
+ytd-comments-section-renderer {
+    background-color: #121212 !important;
+    /* Glow für den gesamten Kommentarbereich MUSS ERHALTEN BLEIBEN */
+    box-shadow: 
+        0 0 15px 5px rgba(240, 248, 255, 0.5), /* Heller innerer Glow */
+        0 0 30px 10px rgba(240, 248, 255, 0.2) !important; /* Breiterer, sanfter äußerer Glow */
+    border-radius: 12px !important;
+    padding: 10px !important; 
+}
+
+/* 2. Einzelne Kommentare: Hintergrund auf transparent setzen, um die "Blackbox" zu entfernen */
+ytd-comment-renderer,
+ytd-comment-renderer #comment-content,
+ytd-comment-renderer #main-content,
+ytd-comment-renderer #expander {
+    /* Alle möglichen Hintergründe der Einzelkommentare entfernen */
+    background-color: transparent !important;
+    /* Linien wiederherstellen (subtil, um die Abgrenzung zu behalten) */
+    border-bottom: 1px solid rgba(240, 248, 255, 0.1) !important; 
+    padding-bottom: 15px !important;
+    margin-bottom: 15px !important;
+}
+/* Letzten Kommentar ohne Linie lassen */
+ytd-comment-renderer:last-child {
+    border-bottom: none !important;
+}
+
+
+/* 3. Textfarben (Unverändert) */
+ytd-comment-renderer *,
+ytd-comment-renderer #header,
+ytd-comment-renderer #content-text,
+ytd-comment-renderer #published-time-text {
+    color: #F0F8FF !important;
+    background-color: transparent !important; 
+}
+
+/* Links (z.B. Erwähnungen, Hashtags) in Pink setzen (Unverändert) */
+ytd-comment-renderer a,
+ytd-comment-renderer #author-text {
+    color: #FF1493 !important;
+}
+
+/* --- GLOW FÜR YT SHORTS KOMMENTAR-BOX --- */
+
+/* Der Haupt-Container für die Kommentare in der YouTube Shorts-Ansicht */
+ytd-engagement-panel-section-list-renderer,
+ytd-engagement-panel-section-list-renderer[target-id="engagement-panel-comments"] {
+    background-color: #121212 !important;
+    border-radius: 12px !important;
+    box-shadow: 
+        0 0 15px 5px rgba(240, 248, 255, 0.5),
+        0 0 30px 10px rgba(240, 248, 255, 0.2) !important; 
+}
+
+/* Trennlinien für Kommentare in Shorts */
+ytd-engagement-panel-section-list-renderer ytd-comment-renderer {
+    background-color: transparent !important;
+    border-bottom: 1px solid rgba(240, 248, 255, 0.3) !important;
+    padding-bottom: 15px !important;
+    margin-bottom: 15px !important;
+}
+ytd-engagement-panel-section-list-renderer ytd-comment-renderer:last-child {
+    border-bottom: none !important;
+}
